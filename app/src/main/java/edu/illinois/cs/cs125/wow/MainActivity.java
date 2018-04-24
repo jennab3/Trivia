@@ -18,6 +18,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+//import com.google.gson.JsonArray;
+//import com.google.gson.JsonObject;
+//import com.google.gson.JsonParser;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     public Button answerOne, answerTwo, answerThree, answerFour, nextQuestion ;
 
     public TextView question;
+
+    public boolean correctOne, correctTwo, correctThree, correctFour = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +50,16 @@ public class MainActivity extends AppCompatActivity {
         nextQuestion = (Button) findViewById(R.id.next);
         question = (TextView) findViewById(R.id.question);
 
+//        JsonParser parser = new JsonParser();
+//        JsonObject result = parser.parse(json).getAsJsonObject();
+//        int weight = result.getAsJsonObject("metadata").get("width").getAsInt();
+
         answerOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Start API Call called");
                 startAPICall();
+
             }
         });
 
@@ -78,6 +88,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void correctAnswer() {
         startAPICall();
+    }
+
+    public void whichQuestionRight() {
+        int random = (int) (Math.random() * (4) + 1);
+        if (random == 1) {
+            correctOne = true;
+        } else if (random == 2) {
+            correctTwo = true;
+        } else if (random == 3) {
+            correctThree = true;
+        } else if (random == 4) {
+            correctFour = true;
+        }
+
     }
 
     void startAPICall() {
