@@ -4,54 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="81dp">
 
-    <Button
-        android:id="@+id/option3"
-        android:layout_width="368dp"
-        android:layout_height="75dp"
-        android:text="Answer"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="354dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/option2"
-        android:layout_width="368dp"
-        android:layout_height="75dp"
-        android:text="Answer"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="279dp" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:text="Would you like to test your skills?"
+            tools:layout_editor_absoluteX="89dp"
+            tools:layout_editor_absoluteY="13dp" />
 
-    <Button
-        android:id="@+id/option1"
-        android:layout_width="368dp"
-        android:layout_height="75dp"
-        android:text="Answer"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="204dp" />
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="match_parent"
+            android:layout_height="172dp"
+            android:text="Question:"
+            tools:layout_editor_absoluteX="6dp"
+            tools:layout_editor_absoluteY="35dp" />
 
-    <Button
-        android:id="@+id/option4"
-        android:layout_width="368dp"
-        android:layout_height="75dp"
-        android:text="Answer"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="429dp" />
+        <Button
+            android:id="@+id/option1"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:text="Answer"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="204dp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="22dp"
-        android:text="Would you like to test your skills?"
-        tools:layout_editor_absoluteX="89dp"
-        tools:layout_editor_absoluteY="13dp" />
+        <Button
+            android:id="@+id/option2"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:text="Answer"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="279dp" />
 
-    <TextView
-        android:id="@+id/question"
-        android:layout_width="373dp"
-        android:layout_height="172dp"
-        android:text="Question:"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="35dp" />
+        <Button
+            android:id="@+id/option3"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:text="Answer"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="354dp" />
+
+        <Button
+            android:id="@+id/option4"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:text="Answer"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="429dp" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
