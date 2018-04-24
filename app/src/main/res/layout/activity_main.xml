@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center_vertical"
         android:orientation="vertical">
 
         <TextView
@@ -31,7 +32,7 @@
         <Button
             android:id="@+id/option1"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="wrap_content"
             android:text="Answer"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="204dp" />
@@ -39,7 +40,7 @@
         <Button
             android:id="@+id/option2"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="wrap_content"
             android:text="Answer"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="279dp" />
@@ -47,7 +48,7 @@
         <Button
             android:id="@+id/option3"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="wrap_content"
             android:text="Answer"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="354dp" />
@@ -55,10 +56,23 @@
         <Button
             android:id="@+id/option4"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="wrap_content"
             android:text="Answer"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="429dp" />
+
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="?android:attr/listDivider"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:text="Next Question" />
 
     </LinearLayout>
 

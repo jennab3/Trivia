@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "WOW:Main";
 
-    public RequestQueue requestQ;
+    public static RequestQueue requestQ;
 
-    public Button answerOne, answerTwo, answerThree, answerFour;
+    public Button answerOne, answerTwo, answerThree, answerFour, nextQuestion ;
 
     public TextView question;
 
@@ -34,17 +34,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        requestQ = Volley.newRequestQueue(this);
+
+        startAPICall();
 
         answerOne = (Button) findViewById(R.id.option1);
         answerTwo = (Button) findViewById(R.id.option2);
         answerThree = (Button) findViewById(R.id.option3);
         answerFour = (Button) findViewById(R.id.option4);
+        nextQuestion = (Button) findViewById(R.id.next);
         question = (TextView) findViewById(R.id.question);
 
         answerOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Log.d(TAG, "Start API Call called");
+                startAPICall();
             }
         });
 
@@ -69,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void correctAnswer() {
         startAPICall();
     }
 
@@ -76,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,
-                    "https://opentdb.com/api.php?amount=10&type=multiple",
+                    "https://opentdb.com/api.php?amount=1&type=multiple",
                     null,
                     new Response.Listener<JSONObject>() {
                         @Override
