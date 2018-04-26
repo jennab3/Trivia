@@ -56,8 +56,11 @@ public class MainActivity extends AppCompatActivity {
         answerOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Start API Call called");
-                answerOne.setText("blah");
+                if (correctOne) {
+                    answerOne.setText("Hurray! That's correct!");
+                } else {
+                    answerOne.setText("Aww, try again :(");
+                }
 
             }
         });
@@ -65,21 +68,33 @@ public class MainActivity extends AppCompatActivity {
         answerTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG,"answer2");
+                if (correctTwo) {
+                    answerTwo.setText("Hurray! That's correct!");
+                } else {
+                    answerTwo.setText("It's okay, you can try again");
+                }
             }
         });
 
         answerThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG,"answer3");
+                if (correctThree) {
+                    answerThree.setText("Hurray! That's correct!");
+                } else {
+                    answerThree.setText("*Insert sad trumpet sound*");
+                }
             }
         });
 
         answerFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG,"answer4");
+                if (correctFour) {
+                    answerFour.setText("Hurray! That's correct!");
+                } else {
+                    answerFour.setText("That's wrong *insert world's smallest violin");
+                }
             }
         });
 
@@ -87,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG,"nextQuestion");
+                reset();
                 startAPICall();
             }
         });
