@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG, "Start API Call called");
                 answerOne.setText("blah");
-                startAPICall();
 
             }
         });
@@ -88,13 +87,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG,"nextQuestion");
+                startAPICall();
             }
         });
 
-    }
-
-    public void correctAnswer() {
-        startAPICall();
     }
 
 
@@ -112,6 +108,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void reset() {
+        correctOne = false;
+        correctTwo = false;
+        correctThree = false;
+        correctFour = false;
+    }
+
     public static String getQuestion(final String json) {
         try {
             JsonParser parser = new JsonParser();
@@ -125,6 +128,60 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public static String getCorrect(final String json) {
+        try {
+            JsonParser parser = new JsonParser();
+            JsonObject result = parser.parse(json).getAsJsonObject();
+            String correct = result.getAsJsonArray("results").get(0).getAsJsonObject().get("correct_answer").getAsString();
+
+            return correct;
+        } catch (Exception e) {
+            return "caught";
+        }
+    }
+
+    public static String getOneIncorrect(final String json) {
+        try {
+            JsonParser parser = new JsonParser();
+            JsonObject result = parser.parse(json).getAsJsonObject();
+            String incorrectOne = result.getAsJsonArray("results").get(0).getAsJsonObject().get("incorrect_answers").getAsJsonArray().get(0).getAsString();
+            Log.d(TAG, incorrectOne);
+
+            return incorrectOne;
+        } catch (Exception e) {
+            Log.d(TAG, "Catch");
+            return "caught";
+        }
+    }
+
+    public static String getTwoIncorrect(final String json) {
+        try {
+            JsonParser parser = new JsonParser();
+            JsonObject result = parser.parse(json).getAsJsonObject();
+            String incorrectOne = result.getAsJsonArray("results").get(0).getAsJsonObject().get("incorrect_answers").getAsJsonArray().get(1).getAsString();
+            Log.d(TAG, incorrectOne);
+
+            return incorrectOne;
+        } catch (Exception e) {
+            Log.d(TAG, "Catch");
+            return "caught";
+        }
+    }
+
+    public static String getThreeIncorrect(final String json) {
+        try {
+            JsonParser parser = new JsonParser();
+            JsonObject result = parser.parse(json).getAsJsonObject();
+            String incorrectOne = result.getAsJsonArray("results").get(0).getAsJsonObject().get("incorrect_answers").getAsJsonArray().get(2).getAsString();
+            Log.d(TAG, incorrectOne);
+
+            return incorrectOne;
+        } catch (Exception e) {
+            Log.d(TAG, "Catch");
+            return "caught";
+        }
+    }
+
     void startAPICall() {
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
@@ -135,8 +192,49 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(final JSONObject response) {
                             Log.d(TAG, response.toString());
+
+                            // Sets the question
                             String help = getQuestion(response.toString());
                             question.setText(help);
+
+                            // Sets the correct answer
+                            whichQuestionRight();
+                            String correct = getCorrect(response.toString());
+                            if (correctOne) {
+                                answerOne.setText(correct);
+                            } else if (correctTwo) {
+                                answerTwo.setText(correct);
+                            } else if (correctThree) {
+                                answerThree.setText(correct);
+                            } else if (correctFour) {
+                                answerFour.setText(correct);
+                            }
+
+                            // Sets incorrect answers
+                            String incorrectOne = getOneIncorrect(response.toString());
+                            String incorrectTwo = getTwoIncorrect(response.toString());
+                            String incorrectThree = getThreeIncorrect(response.toString());
+
+                            if (correctOne) {
+                                answerTwo.setText(incorrectOne);
+                                answerThree.setText(incorrectTwo);
+                                answerFour.setText(incorrectThree);
+                            } else if (correctTwo) {
+                                answerOne.setText(incorrectOne);
+                                answerThree.setText(incorrectTwo);
+                                answerFour.setText(incorrectThree);
+                            } else if (correctThree) {
+                                answerOne.setText(incorrectOne);
+                                answerTwo.setText(incorrectTwo);
+                                answerFour.setText(incorrectThree);
+                            } else if (correctFour) {
+                                answerOne.setText(incorrectOne);
+                                answerTwo.setText(incorrectTwo);
+                                answerThree.setText(incorrectThree);
+                            }
+
+
+
 
                         }
                     }, new Response.ErrorListener() {
