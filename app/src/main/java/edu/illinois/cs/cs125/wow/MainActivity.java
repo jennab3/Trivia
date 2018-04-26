@@ -18,9 +18,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-//import com.google.gson.JsonArray;
-//import com.google.gson.JsonObject;
-//import com.google.gson.JsonParser;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     public TextView question;
 
     public boolean correctOne, correctTwo, correctThree, correctFour = false;
+
+    public int randomNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +52,12 @@ public class MainActivity extends AppCompatActivity {
         nextQuestion = (Button) findViewById(R.id.next);
         question = (TextView) findViewById(R.id.question);
 
-//        JsonParser parser = new JsonParser();
-//        JsonObject result = parser.parse(json).getAsJsonObject();
-//        int weight = result.getAsJsonObject("metadata").get("width").getAsInt();
 
         answerOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Start API Call called");
+                answerOne.setText("blah");
                 startAPICall();
 
             }
@@ -66,21 +66,28 @@ public class MainActivity extends AppCompatActivity {
         answerTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Log.d(TAG,"answer2");
             }
         });
 
         answerThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Log.d(TAG,"answer3");
             }
         });
 
         answerFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG,"answer4");
+            }
+        });
 
+        nextQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG,"nextQuestion");
             }
         });
 
@@ -89,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
     public void correctAnswer() {
         startAPICall();
     }
+
 
     public void whichQuestionRight() {
         int random = (int) (Math.random() * (4) + 1);
@@ -104,6 +112,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public static String getQuestion(final String json) {
+        try {
+            JsonParser parser = new JsonParser();
+            JsonObject result = parser.parse(json).getAsJsonObject();
+            String question = result.getAsJsonArray("results").get(0).getAsJsonObject().get("question").getAsString();
+
+            return question;
+        } catch (Exception e) {
+            Log.d(TAG,"Catch");
+            return "";
+        }
+    }
+
     void startAPICall() {
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
@@ -114,6 +135,9 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(final JSONObject response) {
                             Log.d(TAG, response.toString());
+                            String help = getQuestion(response.toString());
+                            question.setText(help);
+
                         }
                     }, new Response.ErrorListener() {
                 @Override
