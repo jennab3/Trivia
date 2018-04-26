@@ -16,16 +16,18 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="Would you like to test your skills?"
+            android:textSize="24sp"
             tools:layout_editor_absoluteX="89dp"
             tools:layout_editor_absoluteY="13dp" />
 
         <TextView
             android:id="@+id/question"
             android:layout_width="match_parent"
-            android:layout_height="172dp"
+            android:layout_height="138dp"
             android:text="Question:"
+            android:textSize="18sp"
             tools:layout_editor_absoluteX="6dp"
             tools:layout_editor_absoluteY="35dp" />
 
@@ -37,6 +39,10 @@
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="204dp" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
         <Button
             android:id="@+id/option2"
             android:layout_width="match_parent"
@@ -45,6 +51,10 @@
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="279dp" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
         <Button
             android:id="@+id/option3"
             android:layout_width="match_parent"
@@ -52,6 +62,10 @@
             android:text="Answer"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="354dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
 
         <Button
             android:id="@+id/option4"

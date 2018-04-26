@@ -1,5 +1,6 @@
 package edu.illinois.cs.cs125.wow;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ import org.json.JSONObject;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -57,8 +59,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (correctOne) {
+                    answerOne.setBackgroundColor(Color.GREEN);
+                    answerOne.setTextColor(Color.BLACK);
                     answerOne.setText("Hurray! That's correct!");
                 } else {
+                    answerOne.setBackgroundColor(Color.RED);
+                    answerOne.setTextColor(Color.WHITE);
                     answerOne.setText("Aww, try again :(");
                 }
 
@@ -69,8 +75,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (correctTwo) {
+                    answerTwo.setBackgroundColor(Color.GREEN);
+                    answerTwo.setTextColor(Color.BLACK);
                     answerTwo.setText("Hurray! That's correct!");
                 } else {
+                    answerTwo.setBackgroundColor(Color.RED);
+                    answerTwo.setTextColor(Color.WHITE);
                     answerTwo.setText("It's okay, you can try again");
                 }
             }
@@ -80,8 +90,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (correctThree) {
+                    answerThree.setBackgroundColor(Color.GREEN);
+                    answerThree.setTextColor(Color.BLACK);
                     answerThree.setText("Hurray! That's correct!");
                 } else {
+                    answerThree.setBackgroundColor(Color.RED);
+                    answerThree.setTextColor(Color.WHITE);
                     answerThree.setText("*Insert sad trumpet sound*");
                 }
             }
@@ -91,9 +105,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (correctFour) {
+                    answerFour.setBackgroundColor(Color.GREEN);
+                    answerFour.setTextColor(Color.BLACK);
                     answerFour.setText("Hurray! That's correct!");
                 } else {
-                    answerFour.setText("That's wrong *insert world's smallest violin");
+                    answerFour.setBackgroundColor(Color.RED);
+                    answerFour.setTextColor(Color.WHITE);
+                    answerFour.setText("That's wrong *insert world's smallest violin*");
                 }
             }
         });
@@ -103,6 +121,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG,"nextQuestion");
                 reset();
+                answerOne.setBackgroundColor(Color.LTGRAY);
+                answerOne.setTextColor(Color.BLACK);
+                answerTwo.setBackgroundColor(Color.LTGRAY);
+                answerTwo.setTextColor(Color.BLACK);
+                answerThree.setBackgroundColor(Color.LTGRAY);
+                answerThree.setTextColor(Color.BLACK);
+                answerFour.setBackgroundColor(Color.LTGRAY);
+                answerFour.setTextColor(Color.BLACK);
                 startAPICall();
             }
         });
