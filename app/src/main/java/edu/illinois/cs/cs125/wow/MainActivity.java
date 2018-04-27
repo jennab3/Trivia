@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean correctOne, correctTwo, correctThree, correctFour = false;
 
-    public int randomNum;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,17 +52,23 @@ public class MainActivity extends AppCompatActivity {
         nextQuestion = (Button) findViewById(R.id.next);
         question = (TextView) findViewById(R.id.question);
 
+        answerOne.setBackgroundColor(Color.rgb(220,209,231));
+        answerTwo.setBackgroundColor(Color.rgb(220,209,231));
+        answerThree.setBackgroundColor(Color.rgb(220,209,231));
+        answerFour.setBackgroundColor(Color.rgb(220,209,231));
+        nextQuestion.setBackgroundColor(Color.rgb(194,213,225));
+
 
         answerOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (correctOne) {
-                    answerOne.setBackgroundColor(Color.GREEN);
+                    answerOne.setBackgroundColor(Color.rgb(168,232,172));
                     answerOne.setTextColor(Color.BLACK);
                     answerOne.setText("Hurray! That's correct!");
                 } else {
-                    answerOne.setBackgroundColor(Color.RED);
-                    answerOne.setTextColor(Color.WHITE);
+                    answerOne.setBackgroundColor(Color.rgb(232,157,169));
+                    answerOne.setTextColor(Color.BLACK);
                     answerOne.setText("Aww, try again :(");
                 }
 
@@ -75,12 +79,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (correctTwo) {
-                    answerTwo.setBackgroundColor(Color.GREEN);
+                    answerTwo.setBackgroundColor(Color.rgb(168,232,172));
                     answerTwo.setTextColor(Color.BLACK);
                     answerTwo.setText("Hurray! That's correct!");
                 } else {
-                    answerTwo.setBackgroundColor(Color.RED);
-                    answerTwo.setTextColor(Color.WHITE);
+                    answerTwo.setBackgroundColor(Color.rgb(232,157,169));
+                    answerTwo.setTextColor(Color.BLACK);
                     answerTwo.setText("It's okay, you can try again");
                 }
             }
@@ -90,12 +94,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (correctThree) {
-                    answerThree.setBackgroundColor(Color.GREEN);
+                    answerThree.setBackgroundColor(Color.rgb(168,232,172));
                     answerThree.setTextColor(Color.BLACK);
                     answerThree.setText("Hurray! That's correct!");
                 } else {
-                    answerThree.setBackgroundColor(Color.RED);
-                    answerThree.setTextColor(Color.WHITE);
+                    answerThree.setBackgroundColor(Color.rgb(232,157,169));
+                    answerThree.setTextColor(Color.BLACK);
                     answerThree.setText("*Insert sad trumpet sound*");
                 }
             }
@@ -105,12 +109,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (correctFour) {
-                    answerFour.setBackgroundColor(Color.GREEN);
+                    answerFour.setBackgroundColor(Color.rgb(168,232,172));
                     answerFour.setTextColor(Color.BLACK);
                     answerFour.setText("Hurray! That's correct!");
                 } else {
-                    answerFour.setBackgroundColor(Color.RED);
-                    answerFour.setTextColor(Color.WHITE);
+                    answerFour.setBackgroundColor(Color.rgb(232,157,169));
+                    answerFour.setTextColor(Color.BLACK);
                     answerFour.setText("That's wrong *insert world's smallest violin*");
                 }
             }
@@ -121,13 +125,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG,"nextQuestion");
                 reset();
-                answerOne.setBackgroundColor(Color.LTGRAY);
+                answerOne.setBackgroundColor(Color.rgb(220,209,231));
+                answerTwo.setBackgroundColor(Color.rgb(220,209,231));
+                answerThree.setBackgroundColor(Color.rgb(220,209,231));
+                answerFour.setBackgroundColor(Color.rgb(220,209,231));
                 answerOne.setTextColor(Color.BLACK);
-                answerTwo.setBackgroundColor(Color.LTGRAY);
                 answerTwo.setTextColor(Color.BLACK);
-                answerThree.setBackgroundColor(Color.LTGRAY);
                 answerThree.setTextColor(Color.BLACK);
-                answerFour.setBackgroundColor(Color.LTGRAY);
                 answerFour.setTextColor(Color.BLACK);
                 startAPICall();
             }
