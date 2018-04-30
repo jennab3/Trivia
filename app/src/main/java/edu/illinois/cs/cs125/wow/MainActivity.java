@@ -23,6 +23,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.util.Arrays;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         answerThree.setBackgroundColor(Color.rgb(220,209,231));
         answerFour.setBackgroundColor(Color.rgb(220,209,231));
         nextQuestion.setBackgroundColor(Color.rgb(194,213,225));
+        question.setTextColor(Color.rgb(70,70,70));
 
 
         answerOne.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     answerOne.setBackgroundColor(Color.rgb(232,157,169));
                     answerOne.setTextColor(Color.BLACK);
-                    answerOne.setText("Aww, try again :(");
+                    answerOne.setText(randomIncorrect());
                 }
 
             }
@@ -85,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     answerTwo.setBackgroundColor(Color.rgb(232,157,169));
                     answerTwo.setTextColor(Color.BLACK);
-                    answerTwo.setText("It's okay, you can try again");
+                    answerTwo.setText(randomIncorrect());
                 }
             }
         });
@@ -100,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     answerThree.setBackgroundColor(Color.rgb(232,157,169));
                     answerThree.setTextColor(Color.BLACK);
-                    answerThree.setText("*Insert sad trumpet sound*");
+                    answerThree.setText(randomIncorrect());
                 }
             }
         });
@@ -115,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     answerFour.setBackgroundColor(Color.rgb(232,157,169));
                     answerFour.setTextColor(Color.BLACK);
-                    answerFour.setText("That's wrong *insert world's smallest violin*");
+                    answerFour.setText(randomIncorrect());
                 }
             }
         });
@@ -139,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public void whichQuestionRight() {
         int random = (int) (Math.random() * (4) + 1);
         if (random == 1) {
@@ -161,13 +163,25 @@ public class MainActivity extends AppCompatActivity {
         correctFour = false;
     }
 
+    public String[] incorrect = {"Aww, too bad", "Oops! Try again!", "It's okay, you can try again", "That's wrong", "That's incorrect", "Whoops!"};
+
+    public String randomIncorrect() {
+        int random = (int) (Math.random() * (incorrect.length - 1));
+        return incorrect[random];
+    }
+
     public static String getQuestion(final String json) {
         try {
             JsonParser parser = new JsonParser();
             JsonObject result = parser.parse(json).getAsJsonObject();
             String question = result.getAsJsonArray("results").get(0).getAsJsonObject().get("question").getAsString();
 
-            return question;
+            String quote = question.replaceAll("&quot;","\"");
+            String appo = quote.replaceAll("&#039;","'");
+            String e = appo.replaceAll("&eacute;", "e");
+            String amp = e.replaceAll("&amp;","&");
+
+            return amp;
         } catch (Exception e) {
             Log.d(TAG,"Catch");
             return "";
@@ -180,7 +194,12 @@ public class MainActivity extends AppCompatActivity {
             JsonObject result = parser.parse(json).getAsJsonObject();
             String correct = result.getAsJsonArray("results").get(0).getAsJsonObject().get("correct_answer").getAsString();
 
-            return correct;
+            String quote = correct.replaceAll("&quot;","\"");
+            String appo = quote.replaceAll("&#039;","'");
+            String e = appo.replaceAll("&eacute;", "e");
+            String amp = e.replaceAll("&amp;","&");
+
+            return amp;
         } catch (Exception e) {
             return "caught";
         }
@@ -191,9 +210,13 @@ public class MainActivity extends AppCompatActivity {
             JsonParser parser = new JsonParser();
             JsonObject result = parser.parse(json).getAsJsonObject();
             String incorrectOne = result.getAsJsonArray("results").get(0).getAsJsonObject().get("incorrect_answers").getAsJsonArray().get(0).getAsString();
-            Log.d(TAG, incorrectOne);
 
-            return incorrectOne;
+            String quote = incorrectOne.replaceAll("&quot;","\"");
+            String appo = quote.replaceAll("&#039;","'");
+            String e = appo.replaceAll("&eacute;", "e");
+            String amp = e.replaceAll("&amp;","&");
+
+            return amp;
         } catch (Exception e) {
             Log.d(TAG, "Catch");
             return "caught";
@@ -205,9 +228,13 @@ public class MainActivity extends AppCompatActivity {
             JsonParser parser = new JsonParser();
             JsonObject result = parser.parse(json).getAsJsonObject();
             String incorrectOne = result.getAsJsonArray("results").get(0).getAsJsonObject().get("incorrect_answers").getAsJsonArray().get(1).getAsString();
-            Log.d(TAG, incorrectOne);
 
-            return incorrectOne;
+            String quote = incorrectOne.replaceAll("&quot;","\"");
+            String appo = quote.replaceAll("&#039;","'");
+            String e = appo.replaceAll("&eacute;", "e");
+            String amp = e.replaceAll("&amp;","&");
+
+            return amp;
         } catch (Exception e) {
             Log.d(TAG, "Catch");
             return "caught";
@@ -219,9 +246,13 @@ public class MainActivity extends AppCompatActivity {
             JsonParser parser = new JsonParser();
             JsonObject result = parser.parse(json).getAsJsonObject();
             String incorrectOne = result.getAsJsonArray("results").get(0).getAsJsonObject().get("incorrect_answers").getAsJsonArray().get(2).getAsString();
-            Log.d(TAG, incorrectOne);
 
-            return incorrectOne;
+            String quote = incorrectOne.replaceAll("&quot;","\"");
+            String appo = quote.replaceAll("&#039;","'");
+            String e = appo.replaceAll("&eacute;", "e");
+            String amp = e.replaceAll("&amp;","&");
+
+            return amp;
         } catch (Exception e) {
             Log.d(TAG, "Catch");
             return "caught";

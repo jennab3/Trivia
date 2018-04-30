@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="167dp"
             android:text="Question:"
-            android:textSize="24sp"
+            android:textSize="26sp"
             tools:layout_editor_absoluteX="6dp"
             tools:layout_editor_absoluteY="35dp" />
 
