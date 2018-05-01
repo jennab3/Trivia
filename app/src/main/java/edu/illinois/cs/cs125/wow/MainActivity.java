@@ -16,14 +16,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import java.util.Arrays;
 
 
 
@@ -163,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
         correctFour = false;
     }
 
-    public String[] incorrect = {"Aww, too bad", "Oops! Try again!", "It's okay, you can try again", "That's wrong", "That's incorrect", "Whoops!"};
+    public String[] incorrect = {"Aww, too bad", "Oops! Try again!", "It's okay, you can try again", "That's wrong", "That's incorrect", "Whoops!", "Oh no!", "Not again!", "Oopsy daisy"};
 
     public String randomIncorrect() {
         int random = (int) (Math.random() * (incorrect.length - 1));
